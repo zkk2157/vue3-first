@@ -4,9 +4,7 @@
     <div class="INPUT">
       <div class="Input">
         <div class="sign">
-          <div class="font">
-            Sign in our website
-          </div>
+          <div class="font">Sign in our website</div>
         </div>
         <div class="logo">
           <div class="person">
@@ -103,6 +101,7 @@ import { ElMessage } from "element-plus";
 const username = ref("");
 const password = ref("");
 import { useRouter } from "vue-router";
+import { loginService } from "../service/login.js";
 
 export default {
   name: "Login",
@@ -111,10 +110,15 @@ export default {
     const router = useRouter();
 
     async function GoIntoMain() {
-      const res = await axios.get(
-        `http://127.0.0.1:4523/m1/1378008-0-default/pet/?username=${username.value}&password=${password.value}`
-      );
-      if (res.data.data.msg !== "success") {
+      // const res = await axios.get(
+      //   `http://127.0.0.1:4523/m1/1378008-0-default/pet/?username=${username.value}&password=${password.value}`
+      // );
+      //请求后端服务器的数据
+      const res = await loginService('/login',username.value, password.value);
+      // const res = await loginService(username.value, password.value);
+      // const res = await axios.post(`http://10.3.22.74:8080/login?username=${username.value}&password=${password.value}`)
+
+      if (!res.data.success) {
         ElMessage.error("登录失败");
         return;
       } else {
@@ -173,10 +177,10 @@ export default {
   position: fixed;
   background-size: 100% 100%;
 }
-.font{
+.font {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-    font-size: 28px;
+  font-size: 28px;
 }
 .sign {
   display: flex;

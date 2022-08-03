@@ -3,7 +3,8 @@
 //2，代理
 //3，baseUr1
 //4，授权的头部字段
-const DEV_URL = 'http://127.0.0.1:4523/m1/1378008-0-default/'
+
+const DEV_URL = 'http://10.3.22.74:8080'
 // const PRODUCTION_URL = 'http://www.baidu.com'
 
 import axios from "axios"
@@ -16,9 +17,10 @@ const http = axios.create({
 //添加请求拦截器
 //为所有的请求带上身份认证信息
 http.interceptors.request.use(function(config){
-    //在发送请求之前做些什么
-    config.headers['token']='token';
+    // 在发送请求之前做些什么
+    // config.headers['token']='token';
     //一定要返回config
+    // console.log(config)
     return config;
 },function(error){
     //对请求错误做些什么

@@ -1,4 +1,4 @@
-import http from '/index.js'
+import http from './index.js'
 
 // function loginService(pathParams, username, password, data) {
 //     return http.post(`/pet/${pathParams}`, {
@@ -6,10 +6,14 @@ import http from '/index.js'
 //     }, { params: { username: '这里放查询参数' }, headers: { name: '这里放headers' } })
 // }
 
-function loginService(pathParams, username, password, data) {
-    return http.post(`/pet/${pathParams}`, {
-        data,
-    }, { params: { username: username,password:password } })
+
+function loginService(url,username, password) {
+    return http.post(url, null, {
+        params: {
+            username,
+            password,
+        }
+    })
 }
 
 export {
