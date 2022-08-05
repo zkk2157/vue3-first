@@ -6,6 +6,13 @@
         <div class="sign">
           <div class="font">Sign in our website</div>
         </div>
+        <div class="RE">
+          <div class="register">
+            <el-button @click="register" plain size="small " color="#fcc1ef">
+              点击注册</el-button
+            >
+          </div>
+        </div>
         <div class="logo">
           <div class="person">
             <svg
@@ -109,12 +116,17 @@ export default {
   setup() {
     const router = useRouter();
 
+    function register(){
+
+      router.push('/register');
+    }
+
     async function GoIntoMain() {
       // const res = await axios.get(
       //   `http://127.0.0.1:4523/m1/1378008-0-default/pet/?username=${username.value}&password=${password.value}`
       // );
       //请求后端服务器的数据
-      const res = await loginService('/login',username.value, password.value);
+      const res = await loginService("/login", username.value, password.value);
       // const res = await loginService(username.value, password.value);
       // const res = await axios.post(`http://10.3.22.74:8080/login?username=${username.value}&password=${password.value}`)
 
@@ -134,6 +146,7 @@ export default {
       username,
       password,
       GoIntoMain,
+      register
     };
   },
 };
@@ -142,6 +155,14 @@ export default {
 .Lgo {
   display: flex;
   justify-content: center;
+}
+.register {
+  margin-left: 220px;
+  height: 30px;
+  
+}
+.RE{
+  height: 30px;
 }
 .Per {
   width: 30px;
@@ -152,6 +173,8 @@ export default {
 .logo {
   display: flex;
   justify-content: center;
+  height: 50px;
+  margin-top: 10px;
 }
 .person {
   width: 30px;
@@ -160,12 +183,14 @@ export default {
   margin-right: 4px;
 }
 .in {
+  height: 0px;
   width: 325px;
   margin-right: 5px;
 }
 .on {
   width: 325px;
   margin-right: 6px;
+  height: 82px;
 }
 .home {
   display: flex;
@@ -196,7 +221,7 @@ export default {
 
   flex-direction: column;
   border-radius: 13px;
-  margin-top: 130px;
+  margin-bottom: 115px;
   border: 1px #8c8c9d solid;
   background-color: #99000110;
 }
@@ -213,9 +238,11 @@ export default {
 }
 .sign-in {
   width: 70px;
+  
 }
 .Sign {
   display: flex;
   justify-content: center;
+  margin-bottom: 30px;
 }
 </style>

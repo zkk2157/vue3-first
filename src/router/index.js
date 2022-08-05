@@ -3,7 +3,7 @@ import Login from '../views/Login.vue'
 import Main from '../views/Main.vue'
 import ShowTime from '../components/ShowTime.vue'
 import OurPhotos from '../components/OurPhotos.vue'
-
+import regiSter from '../views/regiSter.vue'
 
 const routes = [
   {
@@ -27,7 +27,13 @@ const routes = [
     path:'/photo',
     name:'showphoto',
     component:OurPhotos
+  },
+  {
+    path:'/register',
+    name:'register',
+    component:regiSter
   }
+
 
 ]
 
